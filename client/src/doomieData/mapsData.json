@@ -1,0 +1,68 @@
+{
+  "pozos": [
+    {
+      "caracteristicas": {
+        "id": "1",
+        "COMPLETAMIENTO": "CYB-001ITS",
+        "DP_POZO": "CYB001I",
+        "DP_RESERVORIO": "TS",
+        "DP_CAMPO": "CUYABENO",
+        "DP_PAD": "PAD",
+        "TIPO_TRAYECTORIA": "INYECTOR",
+        "DP_LATITUD": 0.0155,
+        "DP_LONGITUD": -76.2928,
+        "PD_PROFUNDIDAD": "7594.5",
+        "PD_TIPO_POZO": "Reinyector",
+        "DP_OPERADORA": "PETROAMAZONAS"
+      }
+    },
+    {
+      "caracteristicas": {
+        "id": "2",
+        "COMPLETAMIENTO": "CYB-001UI",
+        "DP_POZO": "CYB001",
+        "DP_RESERVORIO": "U-I",
+        "DP_CAMPO": "CUYABENO",
+        "DP_PAD": "PAD",
+        "TIPO_TRAYECTORIA": "Vertical",
+        "DP_LATITUD": 0.00635,
+        "DP_LONGITUD": -76.25497,
+        "PD_PROFUNDIDAD": "6922",
+        "PD_TIPO_POZO": "Productor",
+        "DP_OPERADORA": "PETROAMAZONAS"
+      }
+    },
+    {
+      "caracteristicas": {
+        "id": "3",
+        "COMPLETAMIENTO": "CYB-001US",
+        "DP_POZO": "CYB001",
+        "DP_RESERVORIO": "U-S",
+        "DP_CAMPO": "CUYABENO",
+        "DP_PAD": "PAD",
+        "TIPO_TRAYECTORIA": "Vertical",
+        "DP_LATITUD": 0.00635,
+        "DP_LONGITUD": -76.25497,
+        "PD_PROFUNDIDAD": "6862",
+        "PD_TIPO_POZO": "Productor",
+        "DP_OPERADORA": "PETROAMAZONAS"
+      }
+    },
+    {
+      "caracteristicas": {
+        "id": "4",
+        "COMPLETAMIENTO": "CYB-003TI",
+        "DP_POZO": "CYB003",
+        "DP_RESERVORIO": "TI",
+        "DP_CAMPO": "CUYABENO",
+        "DP_PAD": "PAD",
+        "TIPO_TRAYECTORIA": "Vertical",
+        "DP_LATITUD": 0.03024,
+        "DP_LONGITUD": -76.28701,
+        "PD_PROFUNDIDAD": "6862",
+        "PD_TIPO_POZO": "Productor",
+        "DP_OPERADORA": "PETROAMAZONAS"
+      }
+    }
+  ]
+}
