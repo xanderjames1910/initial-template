@@ -25,7 +25,7 @@ const Login = props => {
     update(_, { data: { login: userData } }) {
       context.login(userData);
       // login(userData);
-      props.history.push('/inicio');
+      props.history.push('/');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -38,7 +38,7 @@ const Login = props => {
   }
 
   return context.user ? (
-    <Redirect to='/inicio' />
+    <Redirect to='/' />
   ) : (
     <div>
       <Grid style={{ margin: 0 }}>

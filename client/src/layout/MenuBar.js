@@ -20,15 +20,7 @@ const MenuBar = () => {
 
   const menuBar = user ? (
     <Container>
-      {/* <Menu.Item name={user.username} active as={Link} to='/' /> */}
       <Menu.Menu position='right'>
-        {/* <Menu.Item
-          name='register'
-          active={activeItem === 'register'}
-          onClick={handleItemClick}
-          as={Link}
-          to='/register'
-        /> */}
         <Menu.Item name='salir' onClick={logout} />
       </Menu.Menu>
     </Container>

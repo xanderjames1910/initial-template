@@ -6,6 +6,7 @@ module.exports.validateRegisterInput = (
   email,
   password,
   confirmPassword,
+  genero,
   perfil,
   direccion,
 ) => {
@@ -34,6 +35,9 @@ module.exports.validateRegisterInput = (
     errors.password = 'La contraseña no debe estar vacia.';
   } else if (password !== confirmPassword) {
     errors.confirmPassword = 'Las contraseñas deben coincidir';
+  }
+  if (genero.trim() === '') {
+    errors.genero = 'El genero no debe estar vacio.';
   }
   if (perfil.trim() === '') {
     errors.perfil = 'El perfil no debe estar vacio.';

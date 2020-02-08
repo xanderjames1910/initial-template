@@ -9,7 +9,9 @@ const SideMenu = () => {
 
   const [activeItem, setActiveItem] = useState();
 
-  const handleItemClick = (e, { name }) => setActiveItem(name);
+  const handleItemClick = (e, { name }) => {
+    setActiveItem(name);
+  };
 
   return (
     <Fragment>
@@ -24,8 +26,7 @@ const SideMenu = () => {
           <span>{user.username}</span>
         </div>
       </Menu.Item>
-      <Menu.Item name='inicio' active={activeItem === 'inicio'} onClick={handleItemClick} as={Link} to='/inicio' />
-      <Menu.Item name='dashboard' active={activeItem === 'dashboard'} onClick={handleItemClick} />
+      <Menu.Item name='inicio' active={activeItem === 'inicio'} onClick={handleItemClick} as={Link} to='/' />
       <Menu.Item
         name='configuracion'
         active={activeItem === 'configuracion'}

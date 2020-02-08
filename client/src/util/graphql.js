@@ -34,3 +34,19 @@ export const FETCH_DAILY_DATA_QUERY = gql`
     }
   }
 `;
+
+export const FETCH_USERS_DATA_QUERY = gql`
+  {
+    getUsers {
+      id
+      nombre
+      cedula
+      telefono
+      username
+      email
+      genero
+      perfil
+      direccion
+    }
+  }
+`;

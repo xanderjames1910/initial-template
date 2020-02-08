@@ -1,14 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Grid, List, Message, Modal } from 'semantic-ui-react';
-import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
-import { AuthContext } from '../context/auth';
 import { useForm } from '../util/hooks';
+import { FETCH_USERS_DATA_QUERY } from '../util/graphql';
 
 const RegisterModal = ({ open, close }) => {
-  // const context = useContext(AuthContext);
-
   const [errors, setErrors] = useState({});
 
   const { onChange, onChangeSelect, onSubmit, values } = useForm(registerUser, {
@@ -19,6 +17,7 @@ const RegisterModal = ({ open, close }) => {
     email: '',
     password: '',
     confirmPassword: '',
+    genero: '',
     perfil: '',
     direccion: '',
   });
@@ -29,9 +28,19 @@ const RegisterModal = ({ open, close }) => {
   };
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(_, { data: { register: userData } }) {
-      // context.login(userData);
-      // props.history.push('/');
+    variables: values,
+    // update(proxy, { data: { register: userData } }) {
+    update(proxy, result) {
+      const data = proxy.readQuery({
+        query: FETCH_USERS_DATA_QUERY,
+      });
+
+      // data.getUsers = [result.data.register, ...data.getUsers];
+      // proxy.writeQuery({ query: FETCH_USERS_DATA_QUERY, data });
+
+      const new_user = result.data.register;
+      proxy.writeQuery({ query: FETCH_USERS_DATA_QUERY, data: { getUsers: [new_user, ...data.getUsers] } });
+      // values.body = '';
       close();
       console.log('Registro Exitoso');
     },
@@ -39,14 +48,18 @@ const RegisterModal = ({ open, close }) => {
       console.log(err.graphQLErrors[0].extensions.exception.errors);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
-    variables: values,
   });
 
   function registerUser() {
     addUser();
   }
 
-  const options = [
+  const optionsGenero = [
+    { text: 'Masculino', value: 'Masculino' },
+    { text: 'Femenino', value: 'Femenino' },
+  ];
+
+  const optionsPerfil = [
     { text: 'Administrador', value: 'Administrador' },
     { text: 'Visualizador', value: 'Visualizador' },
   ];
@@ -153,10 +166,22 @@ const RegisterModal = ({ open, close }) => {
                 </Grid.Column>
                 <Grid.Column>
                   <Form.Select
+                    label='Genero'
+                    placeholder='Genero'
+                    name='genero'
+                    options={optionsGenero}
+                    fluid
+                    value={values.genero}
+                    error={errors.genero ? true : false}
+                    onChange={onChangeSelect}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Form.Select
                     label='Perfil'
                     placeholder='Perfil'
                     name='perfil'
-                    options={options}
+                    options={optionsPerfil}
                     fluid
                     value={values.perfil}
                     error={errors.perfil ? true : false}
@@ -221,6 +246,7 @@ const REGISTER_USER = gql`
     $email: String!
     $password: String!
     $confirmPassword: String!
+    $genero: String!
     $perfil: String!
     $direccion: String!
   ) {
@@ -233,14 +259,20 @@ const REGISTER_USER = gql`
         email: $email
         password: $password
         confirmPassword: $confirmPassword
+        genero: $genero
         perfil: $perfil
         direccion: $direccion
       }
     ) {
       id
-      email
+      nombre
+      cedula
+      telefono
       username
-      createdAt
+      email
+      genero
+      perfil
+      direccion
     }
   }
 `;

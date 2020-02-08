@@ -52,5 +52,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://stormy-inlet-67112.herokuapp.com/"
 }
